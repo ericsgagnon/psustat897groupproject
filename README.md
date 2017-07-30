@@ -1,13 +1,11 @@
 # psustat897groupproject
-Stat897 – Applied Data Mining &amp; Statistical Learning
+# Stat897 – Applied Data Mining &amp; Statistical Learning
 
+## Team Project
+## This project is to be completed in your group. Project is due Monday August 7
+## Report to be submitted in PDF format only. You need to submit an .xls/.xlsx file also  
 
-Team Project
-This project is to be completed in your group. Project is due Monday August 7
-Report to be submitted in PDF format only. You need to submit an .xls/.xlsx file also
-A charitable organization wishes to develop a data-mining model to improve the cost-effectiveness of their
-direct marketing campaigns to previous donors. According to their recent mailing records, the typical overall
-response rate is 10%. Out of those who respond (donate), the average donation is $14.50. Each mailing, which
+A charitable organization wishes to develop a data-mining model to improve the cost-effectiveness of their direct marketing campaigns to previous donors. According to their recent mailing records, the typical overall response rate is 10%. Out of those who respond (donate), the average donation is $14.50. Each mailing, which
 includes a gift of personalized address labels and assortments of cards and envelopes, costs $2 to produce and
 send. Since expected profit from each mailing is 14.5  0.1 – 2 = –$0.55, it is not cost effective to mail everyone.
 We would like to develop a classification model using data from the most recent campaign that can effectively
