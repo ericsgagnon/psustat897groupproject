@@ -1,9 +1,10 @@
-# psustat897groupproject
 # Stat897 – Applied Data Mining &amp; Statistical Learning
 
 ## Team Project
-## This project is to be completed in your group. Project is due Monday August 7
-## Report to be submitted in PDF format only. You need to submit an .xls/.xlsx file also  
+
+**This project is to be completed in your group. Project is due Monday August 7**  
+
+**Report to be submitted in PDF format only. You need to submit an .xls/.xlsx file also**
 
 A charitable organization wishes to develop a data-mining model to improve the cost-effectiveness of their direct marketing campaigns to previous donors. According to their recent mailing records, the typical overall response rate is 10%. Out of those who respond (donate), the average donation is $14.50. Each mailing, which includes a gift of personalized address labels and assortments of cards and envelopes, costs $2 to produce and send. Since expected profit from each mailing is 14.5 * 0.1 – 2 = –$0.55, it is not cost effective to mail everyone. We would like to develop a classification model using data from the most recent campaign that can effectively capture likely donors so that the expected net profit is maximized. The entire dataset consists of 3984 training observations, 2018 validation observations, and 2007 test observations. Weighted sampling has been used, overrepresenting the responders so that the training and validation samples have approximately equal numbers of donors and non-donors. The response rate in the test sample has the more typical 10% response rate. We would also like to build a model to predict donation amounts for donors – the data for this will consist of the records for donors only. The data are available in the file “charity.csv”.  
 
