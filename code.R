@@ -58,6 +58,7 @@ p <- list()
 # raw data density plots
 p$density_raw <- {
     data %>% 
+    filter( part == 'train' ) %>% 
     dplyr::select( avhv , npro , tgif , lgif , rgif , agif , tdon , tlag , incm , inca ) %>% 
     density_plots( 'Density Plots of Raw Data' )
   p$density_raw
@@ -66,6 +67,7 @@ p$density_raw <- {
 # log-transformed density plots
 p$density_logtransformed <- {
   data %>% 
+    filter( part == 'train' ) %>% 
     dplyr::select( avhv , npro , tgif , lgif , rgif , agif , tdon , tlag , incm , inca ) %>% 
     mutate_all( log ) %>% 
     density_plots( 'Density Plots of Log-Transformed Data' )
@@ -75,6 +77,7 @@ p$density_logtransformed <- {
 # correlation plot
 p$correlations <- {
   data %>% 
+  filter( part == 'train' ) %>% 
   select( cfg$predictors ) %>% 
   select( -matches('reg') ) %>% 
   cor() %>% 
@@ -101,16 +104,6 @@ p$correlations <- {
   )
 }
 
-# save plots to png
-  p %>% 
-  names %>% 
-  lapply( function(x){  
-    ggsave( 
-      filename = paste0( 'plot-' ,  x , '.png' ) , 
-      plot = p[[x]]  ,
-      path = './output' 
-    ) 
-  })
 
 # Prep Data ###########################################################################
 
@@ -121,15 +114,32 @@ data %<>%
     vars( avhv , tgif , lgif , rgif , agif , tlag , incm , inca ) , 
     log )
 
-# Dimension Reduction #################################################################
-  
-# Correlation plots indicate several groups of highly correlated predictors:
-# perform pca & reg subsets
+# Visuals #############################################################################
 
+p$predstodamt <-  {
+  data %>% 
+    filter( part == 'train' ) %>% 
+    filter( damt > 0 ) %>% 
+    select( cfg$predictors , damt , -matches('reg') , -home , -genf ) %>% 
+    gather( predictor , value , -damt ) %>% 
+    ggplot( aes( value , damt , color = predictor , group = predictor ) ) +
+    geom_point() + 
+    geom_density2d(  color = 'gray' ) +
+    geom_smooth( method = 'loess' , color = 'black') +
+    facet_wrap( ~ predictor , scales = 'free' ) +
+    theme_gdocs() + 
+    theme(
+      legend.position = 'none' 
+    )
+}   
 
-    
-  
-# Classification ######################################################################
-
-  
-  
+# save plots to png
+  p %>% 
+  names %>% 
+  lapply( function(x){  
+    ggsave( 
+      filename = paste0( 'plot-' ,  x , '.png' ) , 
+      plot = p[[x]]  ,
+      path = './output' 
+    ) 
+  })
